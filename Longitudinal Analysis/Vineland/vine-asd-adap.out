@@ -1,0 +1,229 @@
+Mplus VERSION 8.3
+MUTHEN & MUTHEN
+04/17/2023   2:14 PM
+
+INPUT INSTRUCTIONS
+
+  title: LGM With Person-Specific Time Codes,
+  Centered at the First Measurement Occasion
+
+  data: file is data.vine.asd.csv;
+
+  variable: names are sid id gender diag age1-age5
+  com1-com5 dly1-dly5 mtr1-mtr5 soc1-soc5 adap1-adap5 t1-t5;
+
+  usevariables are adap1-adap5 t1-t5 gender;
+  missing are all (-99);
+
+  tscores = t1-t5; !variables contain person-specific time codes
+
+  analysis: type = random;
+  estimator = MLF;
+
+  model: int slope| adap1-adap5 at t1-t5; !define LGM with quadratic growth trajectory
+  !adap1-adap5(1); !constrain residual variance to equality over time (homoscedasticity)
+  int ON gender;
+  slope ON gender;
+
+  !PLOT:
+  !TYPE = plot1 plot2 plot3;
+  !SERIES = coso1(1) coso2(2) coso3(3) coso4(4) coso5(5);
+
+
+
+*** WARNING
+  Data set contains cases with missing on all variables except
+  x-variables.  These cases were not included in the analysis.
+  Number of cases with missing on all variables except x-variables:  3
+   1 WARNING(S) FOUND IN THE INPUT INSTRUCTIONS
+
+
+
+LGM With Person-Specific Time Codes,
+Centered at the First Measurement Occasion
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                        1536
+
+Number of dependent variables                                    5
+Number of independent variables                                  1
+Number of continuous latent variables                            2
+
+Observed dependent variables
+
+  Continuous
+   ADAP1       ADAP2       ADAP3       ADAP4       ADAP5
+
+Observed independent variables
+   GENDER
+
+Continuous latent variables
+   INT         SLOPE
+
+Variables with special functions
+
+  Time scores
+   T1          T2          T3          T4          T5
+
+
+Estimator                                                      MLF
+Information matrix                                        OBSERVED
+Maximum number of iterations                                   100
+Convergence criterion                                    0.100D-05
+Maximum number of EM iterations                                500
+Convergence criteria for the EM algorithm
+  Loglikelihood change                                   0.100D-02
+  Relative loglikelihood change                          0.100D-05
+  Derivative                                             0.100D-03
+Minimum variance                                         0.100D-03
+Maximum number of steepest descent iterations                   20
+Maximum number of iterations for H1                           2000
+Convergence criterion for H1                             0.100D-03
+Optimization algorithm                                         EMA
+
+Input data file(s)
+  data.vine.asd.csv
+Input data format  FREE
+
+
+SUMMARY OF DATA
+
+     Number of missing data patterns             5
+
+
+COVARIANCE COVERAGE OF DATA
+
+Minimum covariance coverage value   0.100
+
+
+     PROPORTION OF DATA PRESENT
+
+
+           Covariance Coverage
+              ADAP1         ADAP2         ADAP3         ADAP4         ADAP5
+              ________      ________      ________      ________      ________
+ ADAP1          1.000
+ ADAP2          0.464         0.464
+ ADAP3          0.160         0.160         0.160
+ ADAP4          0.029         0.029         0.029         0.029
+ ADAP5          0.005         0.005         0.005         0.005         0.005
+ GENDER         1.000         0.464         0.160         0.029         0.005
+
+
+           Covariance Coverage
+              GENDER
+              ________
+ GENDER         1.000
+
+     WARNING:  THE COVARIANCE COVERAGE FALLS BELOW THE SPECIFIED LIMIT.
+
+
+
+UNIVARIATE SAMPLE STATISTICS
+
+
+     UNIVARIATE HIGHER-ORDER MOMENT DESCRIPTIVE STATISTICS
+
+         Variable/         Mean/     Skewness/   Minimum/ % with                Percentiles
+        Sample Size      Variance    Kurtosis    Maximum  Min/Max      20%/60%    40%/80%    Median
+
+     ADAP1                79.234       0.274      40.000    0.07%      70.000     76.000     79.000
+            1536.000     127.227       1.209     147.000    0.07%      81.000     88.000
+     ADAP2                80.038       0.297      46.000    0.14%      69.000     76.000     79.000
+             713.000     149.344       0.370     131.000    0.14%      83.000     90.000
+     ADAP3                81.809       0.336      47.000    0.41%      72.000     78.000     81.000
+             246.000     165.659       0.462     126.000    0.41%      84.000     91.000
+     ADAP4                85.333       0.438      61.000    2.22%      75.000     81.000     83.000
+              45.000     134.667      -0.544     109.000    2.22%      84.000     97.000
+     ADAP5                80.429      -0.151      63.000   14.29%      63.000     75.000     76.000
+               7.000     111.673      -1.281      94.000   14.29%      76.000     91.000
+     GENDER                0.220       1.351       0.000   77.99%       0.000      0.000      0.000
+            1536.000       0.172      -0.173       1.000   22.01%       0.000      1.000
+
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                       12
+
+Loglikelihood
+
+          H0 Value                       -9634.439
+
+Information Criteria
+
+          Akaike (AIC)                   19292.878
+          Bayesian (BIC)                 19356.921
+          Sample-Size Adjusted BIC       19318.800
+            (n* = (n + 2) / 24)
+
+
+
+MODEL RESULTS
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ INT        ON
+    GENDER             0.263      0.715      0.369      0.712
+
+ SLOPE      ON
+    GENDER             0.021      0.071      0.294      0.769
+
+ SLOPE    WITH
+    INT                0.051      0.381      0.133      0.894
+
+ Intercepts
+    ADAP1              0.000      0.000    999.000    999.000
+    ADAP2              0.000      0.000    999.000    999.000
+    ADAP3              0.000      0.000    999.000    999.000
+    ADAP4              0.000      0.000    999.000    999.000
+    ADAP5              0.000      0.000    999.000    999.000
+    INT               79.283      0.327    242.096      0.000
+    SLOPE             -0.099      0.036     -2.735      0.006
+
+ Residual Variances
+    ADAP1             45.167      3.408     13.254      0.000
+    ADAP2             45.736      3.498     13.076      0.000
+    ADAP3             54.858      6.318      8.683      0.000
+    ADAP4             34.985     16.487      2.122      0.034
+    ADAP5             24.027     61.110      0.393      0.694
+    INT               82.940      4.982     16.648      0.000
+    SLOPE              0.152      0.035      4.408      0.000
+
+
+QUALITY OF NUMERICAL RESULTS
+
+     Condition Number for the Information Matrix              0.188E-05
+       (ratio of smallest to largest eigenvalue)
+
+
+DIAGRAM INFORMATION
+
+  Use View Diagram under the Diagram menu in the Mplus Editor to view the diagram.
+  If running Mplus from the Mplus Diagrammer, the diagram opens automatically.
+
+  Diagram output
+    e:\ucsd - ace\paper - gender difference - sara\longitudinal analysis - lgm with individual specific time points\vine
+
+     Beginning Time:  14:14:37
+        Ending Time:  14:14:47
+       Elapsed Time:  00:00:10
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2019 Muthen & Muthen

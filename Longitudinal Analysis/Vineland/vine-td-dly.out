@@ -1,0 +1,227 @@
+Mplus VERSION 8.3
+MUTHEN & MUTHEN
+04/20/2023   2:53 PM
+
+INPUT INSTRUCTIONS
+
+  title: LGM With Person-Specific Time Codes,
+  Centered at the First Measurement Occasion
+
+  data: file is data.vine.td.csv;
+
+  variable: names are sid id gender diag age1-age5
+  com1-com5 dly1-dly5 mtr1-mtr5 soc1-soc5 adap1-adap5 t1-t5;
+
+  usevariables are dly1-dly5 t1-t5 gender;
+  missing are all (-99);
+
+  tscores = t1-t5; !variables contain person-specific time codes
+
+  analysis: type = random;
+  estimator = MLR;
+
+  model: int slope| dly1-dly5 at t1-t5; !define LGM with quadratic growth trajectory
+  !dly1-dly5(1); !constrain residual variance to equality over time (homoscedasticity)
+  int ON gender;
+  slope ON gender;
+
+  !PLOT:
+  !TYPE = plot1 plot2 plot3;
+  !SERIES = coso1(1) coso2(2) coso3(3) coso4(4) coso5(5);
+
+
+
+INPUT READING TERMINATED NORMALLY
+
+
+
+LGM With Person-Specific Time Codes,
+Centered at the First Measurement Occasion
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                         601
+
+Number of dependent variables                                    5
+Number of independent variables                                  1
+Number of continuous latent variables                            2
+
+Observed dependent variables
+
+  Continuous
+   DLY1        DLY2        DLY3        DLY4        DLY5
+
+Observed independent variables
+   GENDER
+
+Continuous latent variables
+   INT         SLOPE
+
+Variables with special functions
+
+  Time scores
+   T1          T2          T3          T4          T5
+
+
+Estimator                                                      MLR
+Information matrix                                        OBSERVED
+Maximum number of iterations                                   100
+Convergence criterion                                    0.100D-05
+Maximum number of EM iterations                                500
+Convergence criteria for the EM algorithm
+  Loglikelihood change                                   0.100D-02
+  Relative loglikelihood change                          0.100D-05
+  Derivative                                             0.100D-03
+Minimum variance                                         0.100D-03
+Maximum number of steepest descent iterations                   20
+Maximum number of iterations for H1                           2000
+Convergence criterion for H1                             0.100D-03
+Optimization algorithm                                         EMA
+
+Input data file(s)
+  data.vine.td.csv
+Input data format  FREE
+
+
+SUMMARY OF DATA
+
+     Number of missing data patterns             5
+
+
+COVARIANCE COVERAGE OF DATA
+
+Minimum covariance coverage value   0.100
+
+
+     PROPORTION OF DATA PRESENT
+
+
+           Covariance Coverage
+              DLY1          DLY2          DLY3          DLY4          DLY5
+              ________      ________      ________      ________      ________
+ DLY1           1.000
+ DLY2           0.576         0.576
+ DLY3           0.301         0.301         0.301
+ DLY4           0.088         0.088         0.088         0.088
+ DLY5           0.013         0.013         0.013         0.013         0.013
+ GENDER         1.000         0.576         0.301         0.088         0.013
+
+
+           Covariance Coverage
+              GENDER
+              ________
+ GENDER         1.000
+
+     WARNING:  THE COVARIANCE COVERAGE FALLS BELOW THE SPECIFIED LIMIT.
+
+
+
+UNIVARIATE SAMPLE STATISTICS
+
+
+     UNIVARIATE HIGHER-ORDER MOMENT DESCRIPTIVE STATISTICS
+
+         Variable/         Mean/     Skewness/   Minimum/ % with                Percentiles
+        Sample Size      Variance    Kurtosis    Maximum  Min/Max      20%/60%    40%/80%    Median
+
+     DLY1                 99.073      -0.261      37.000    0.17%      91.000     96.000     99.000
+             601.000     123.352       1.178     134.000    0.17%     101.000    109.000
+     DLY2                103.176       0.069      43.000    0.29%      93.000     99.000    102.000
+             346.000     161.533       1.226     145.000    0.58%     105.000    113.000
+     DLY3                103.541      -0.152      56.000    0.55%      95.000    100.000    103.000
+             181.000     135.353       0.905     131.000    0.55%     105.000    112.000
+     DLY4                105.094       0.340      74.000    1.89%      95.000    100.000    105.000
+              53.000     149.331       0.494     136.000    1.89%     109.000    113.000
+     DLY5                101.875      -1.483      83.000   12.50%     100.000    101.000    103.000
+               8.000      62.359       1.271     109.000   25.00%     105.000    107.000
+     GENDER                0.419       0.327       0.000   58.07%       0.000      0.000      0.000
+             601.000       0.243      -1.893       1.000   41.93%       1.000      1.000
+
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                       12
+
+Loglikelihood
+
+          H0 Value                       -4511.535
+          H0 Scaling Correction Factor      1.2070
+            for MLR
+
+Information Criteria
+
+          Akaike (AIC)                    9047.070
+          Bayesian (BIC)                  9099.853
+          Sample-Size Adjusted BIC        9061.756
+            (n* = (n + 2) / 24)
+
+
+
+MODEL RESULTS
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ INT        ON
+    GENDER             3.779      0.888      4.257      0.000
+
+ SLOPE      ON
+    GENDER             0.083      0.069      1.190      0.234
+
+ SLOPE    WITH
+    INT               -0.673      0.587     -1.148      0.251
+
+ Intercepts
+    DLY1               0.000      0.000    999.000    999.000
+    DLY2               0.000      0.000    999.000    999.000
+    DLY3               0.000      0.000    999.000    999.000
+    DLY4               0.000      0.000    999.000    999.000
+    DLY5               0.000      0.000    999.000    999.000
+    INT               97.797      0.578    169.330      0.000
+    SLOPE              0.223      0.050      4.455      0.000
+
+ Residual Variances
+    DLY1              68.306     11.157      6.122      0.000
+    DLY2              85.211     10.800      7.890      0.000
+    DLY3              48.513      9.235      5.253      0.000
+    DLY4              38.953     18.489      2.107      0.035
+    DLY5              30.732     26.493      1.160      0.246
+    INT               55.121     14.943      3.689      0.000
+    SLOPE              0.120      0.050      2.385      0.017
+
+
+QUALITY OF NUMERICAL RESULTS
+
+     Condition Number for the Information Matrix              0.601E-05
+       (ratio of smallest to largest eigenvalue)
+
+
+DIAGRAM INFORMATION
+
+  Use View Diagram under the Diagram menu in the Mplus Editor to view the diagram.
+  If running Mplus from the Mplus Diagrammer, the diagram opens automatically.
+
+  Diagram output
+    e:\ucsd - ace\paper - gender difference - sara\longitudinal analysis - lgm with individual specific time points\vine
+
+     Beginning Time:  14:53:14
+        Ending Time:  14:53:14
+       Elapsed Time:  00:00:00
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2019 Muthen & Muthen

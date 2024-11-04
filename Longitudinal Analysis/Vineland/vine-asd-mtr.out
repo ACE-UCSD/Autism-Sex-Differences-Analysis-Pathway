@@ -1,0 +1,231 @@
+Mplus VERSION 8.3
+MUTHEN & MUTHEN
+04/20/2023   2:52 PM
+
+INPUT INSTRUCTIONS
+
+  title: LGM With Person-Specific Time Codes,
+  Centered at the First Measurement Occasion
+
+  data: file is data.vine.asd.csv;
+
+  variable: names are sid id gender diag age1-age5
+  com1-com5 dly1-dly5 mtr1-mtr5 soc1-soc5 adap1-adap5 t1-t5;
+
+  usevariables are mtr1-mtr5 t1-t5 gender;
+  missing are all (-99);
+
+  tscores = t1-t5; !variables contain person-specific time codes
+
+  analysis: type = random;
+  estimator = MLR;
+
+  model: int slope| mtr1-mtr5 at t1-t5; !define LGM with quadratic growth trajectory
+  !mtr1-mtr5(1); !constrain residual variance to equality over time (homoscedasticity)
+  int ON gender;
+  slope ON gender;
+
+  !PLOT:
+  !TYPE = plot1 plot2 plot3;
+  !SERIES = coso1(1) coso2(2) coso3(3) coso4(4) coso5(5);
+
+
+
+*** WARNING
+  Data set contains cases with missing on all variables except
+  x-variables.  These cases were not included in the analysis.
+  Number of cases with missing on all variables except x-variables:  1
+   1 WARNING(S) FOUND IN THE INPUT INSTRUCTIONS
+
+
+
+LGM With Person-Specific Time Codes,
+Centered at the First Measurement Occasion
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                        1538
+
+Number of dependent variables                                    5
+Number of independent variables                                  1
+Number of continuous latent variables                            2
+
+Observed dependent variables
+
+  Continuous
+   MTR1        MTR2        MTR3        MTR4        MTR5
+
+Observed independent variables
+   GENDER
+
+Continuous latent variables
+   INT         SLOPE
+
+Variables with special functions
+
+  Time scores
+   T1          T2          T3          T4          T5
+
+
+Estimator                                                      MLR
+Information matrix                                        OBSERVED
+Maximum number of iterations                                   100
+Convergence criterion                                    0.100D-05
+Maximum number of EM iterations                                500
+Convergence criteria for the EM algorithm
+  Loglikelihood change                                   0.100D-02
+  Relative loglikelihood change                          0.100D-05
+  Derivative                                             0.100D-03
+Minimum variance                                         0.100D-03
+Maximum number of steepest descent iterations                   20
+Maximum number of iterations for H1                           2000
+Convergence criterion for H1                             0.100D-03
+Optimization algorithm                                         EMA
+
+Input data file(s)
+  data.vine.asd.csv
+Input data format  FREE
+
+
+SUMMARY OF DATA
+
+     Number of missing data patterns             5
+
+
+COVARIANCE COVERAGE OF DATA
+
+Minimum covariance coverage value   0.100
+
+
+     PROPORTION OF DATA PRESENT
+
+
+           Covariance Coverage
+              MTR1          MTR2          MTR3          MTR4          MTR5
+              ________      ________      ________      ________      ________
+ MTR1           1.000
+ MTR2           0.463         0.463
+ MTR3           0.160         0.160         0.160
+ MTR4           0.029         0.029         0.029         0.029
+ MTR5           0.005         0.005         0.005         0.005         0.005
+ GENDER         1.000         0.463         0.160         0.029         0.005
+
+
+           Covariance Coverage
+              GENDER
+              ________
+ GENDER         1.000
+
+     WARNING:  THE COVARIANCE COVERAGE FALLS BELOW THE SPECIFIED LIMIT.
+
+
+
+UNIVARIATE SAMPLE STATISTICS
+
+
+     UNIVARIATE HIGHER-ORDER MOMENT DESCRIPTIVE STATISTICS
+
+         Variable/         Mean/     Skewness/   Minimum/ % with                Percentiles
+        Sample Size      Variance    Kurtosis    Maximum  Min/Max      20%/60%    40%/80%    Median
+
+     MTR1                 90.434      -0.120      40.000    0.13%      81.000     88.000     90.000
+            1538.000     125.930       0.505     144.000    0.07%      93.000    100.000
+     MTR2                 89.875      -0.007      56.000    0.14%      79.000     88.000     90.000
+             712.000     131.048      -0.162     131.000    0.14%      93.000    100.000
+     MTR3                 89.951       0.017      56.000    0.41%      81.000     88.000     90.000
+             246.000     126.591      -0.065     124.000    0.41%      93.000    100.000
+     MTR4                 87.422       0.158      64.000    2.22%      77.000     85.000     85.000
+              45.000     115.755      -0.453     111.000    2.22%      88.000     97.000
+     MTR5                 88.143       0.759      75.000   14.29%      75.000     84.000     88.000
+               7.000      84.980       0.127     107.000   14.29%      88.000     91.000
+     GENDER                0.220       1.349       0.000   77.96%       0.000      0.000      0.000
+            1538.000       0.172      -0.180       1.000   22.04%       0.000      1.000
+
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                       12
+
+Loglikelihood
+
+          H0 Value                       -9608.338
+          H0 Scaling Correction Factor      1.2533
+            for MLR
+
+Information Criteria
+
+          Akaike (AIC)                   19240.677
+          Bayesian (BIC)                 19304.735
+          Sample-Size Adjusted BIC       19266.614
+            (n* = (n + 2) / 24)
+
+
+
+MODEL RESULTS
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ INT        ON
+    GENDER            -0.826      0.673     -1.227      0.220
+
+ SLOPE      ON
+    GENDER             0.142      0.071      1.996      0.046
+
+ SLOPE    WITH
+    INT               -0.973      0.534     -1.823      0.068
+
+ Intercepts
+    MTR1               0.000      0.000    999.000    999.000
+    MTR2               0.000      0.000    999.000    999.000
+    MTR3               0.000      0.000    999.000    999.000
+    MTR4               0.000      0.000    999.000    999.000
+    MTR5               0.000      0.000    999.000    999.000
+    INT               90.765      0.327    277.638      0.000
+    SLOPE             -0.215      0.032     -6.737      0.000
+
+ Residual Variances
+    MTR1              49.074      9.236      5.313      0.000
+    MTR2              57.873      6.287      9.205      0.000
+    MTR3              54.542     10.762      5.068      0.000
+    MTR4              47.498     16.174      2.937      0.003
+    MTR5              11.076     31.530      0.351      0.725
+    INT               77.229      8.659      8.919      0.000
+    SLOPE              0.106      0.041      2.610      0.009
+
+
+QUALITY OF NUMERICAL RESULTS
+
+     Condition Number for the Information Matrix              0.187E-05
+       (ratio of smallest to largest eigenvalue)
+
+
+DIAGRAM INFORMATION
+
+  Use View Diagram under the Diagram menu in the Mplus Editor to view the diagram.
+  If running Mplus from the Mplus Diagrammer, the diagram opens automatically.
+
+  Diagram output
+    e:\ucsd - ace\paper - gender difference - sara\longitudinal analysis - lgm with individual specific time points\vine
+
+     Beginning Time:  14:52:21
+        Ending Time:  14:52:23
+       Elapsed Time:  00:00:02
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2019 Muthen & Muthen
