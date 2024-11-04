@@ -1,0 +1,267 @@
+Mplus VERSION 8.3
+MUTHEN & MUTHEN
+04/20/2023   2:49 PM
+
+INPUT INSTRUCTIONS
+
+  title: LGM With Person-Specific Time Codes,
+  Centered at the First Measurement Occasion
+
+  data: file is data.ados.td.csv;
+
+  variable: names are sid id age1-age5 gender diag
+  coso1-coso5 rr1-rr5 tot1-tot5 t1-t5;
+
+  usevariables are coso1-coso5 t1-t5 gender;
+  missing are all (-99);
+
+  tscores = t1-t5; !variables contain person-specific time codes
+
+  analysis: type = random;
+  estimator = MLR;
+
+  model: int slope| coso1-coso5 at t1-t5; !define LGM with quadratic growth trajectory
+  !coso1-coso5(1); !constrain residual variance to equality over time (homoscedasticity)
+  int ON gender;
+  slope ON gender;
+
+
+  PLOT:
+  TYPE = plot1 plot2 plot3;
+  SERIES = coso1(1) coso2(2) coso3(3) coso4(4) coso5(5);
+
+
+
+INPUT READING TERMINATED NORMALLY
+
+
+
+LGM With Person-Specific Time Codes,
+Centered at the First Measurement Occasion
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                         599
+
+Number of dependent variables                                    5
+Number of independent variables                                  1
+Number of continuous latent variables                            2
+
+Observed dependent variables
+
+  Continuous
+   COSO1       COSO2       COSO3       COSO4       COSO5
+
+Observed independent variables
+   GENDER
+
+Continuous latent variables
+   INT         SLOPE
+
+Variables with special functions
+
+  Time scores
+   T1          T2          T3          T4          T5
+
+
+Estimator                                                      MLR
+Information matrix                                        OBSERVED
+Maximum number of iterations                                   100
+Convergence criterion                                    0.100D-05
+Maximum number of EM iterations                                500
+Convergence criteria for the EM algorithm
+  Loglikelihood change                                   0.100D-02
+  Relative loglikelihood change                          0.100D-05
+  Derivative                                             0.100D-03
+Minimum variance                                         0.100D-03
+Maximum number of steepest descent iterations                   20
+Maximum number of iterations for H1                           2000
+Convergence criterion for H1                             0.100D-03
+Optimization algorithm                                         EMA
+
+Input data file(s)
+  data.ados.td.csv
+Input data format  FREE
+
+
+SUMMARY OF DATA
+
+     Number of missing data patterns             5
+
+
+COVARIANCE COVERAGE OF DATA
+
+Minimum covariance coverage value   0.100
+
+
+     PROPORTION OF DATA PRESENT
+
+
+           Covariance Coverage
+              COSO1         COSO2         COSO3         COSO4         COSO5
+              ________      ________      ________      ________      ________
+ COSO1          1.000
+ COSO2          0.586         0.586
+ COSO3          0.306         0.306         0.306
+ COSO4          0.092         0.092         0.092         0.092
+ COSO5          0.015         0.015         0.015         0.015         0.015
+ GENDER         1.000         0.586         0.306         0.092         0.015
+
+
+           Covariance Coverage
+              GENDER
+              ________
+ GENDER         1.000
+
+     WARNING:  THE COVARIANCE COVERAGE FALLS BELOW THE SPECIFIED LIMIT.
+
+
+
+UNIVARIATE SAMPLE STATISTICS
+
+
+     UNIVARIATE HIGHER-ORDER MOMENT DESCRIPTIVE STATISTICS
+
+         Variable/         Mean/     Skewness/   Minimum/ % with                Percentiles
+        Sample Size      Variance    Kurtosis    Maximum  Min/Max      20%/60%    40%/80%    Median
+
+     COSO1                 3.025       1.626       0.000   13.52%       1.000      2.000      2.000
+             599.000       6.979       4.382      19.000    0.17%       3.000      5.000
+     COSO2                 2.162       0.914       0.000   18.23%       1.000      1.000      2.000
+             351.000       3.270       0.679      10.000    0.28%       2.000      4.000
+     COSO3                 1.907       0.664       0.000   22.40%       0.000      1.000      2.000
+             183.000       2.510      -0.197       7.000    0.55%       2.000      3.000
+     COSO4                 1.855       1.116       0.000   30.91%       0.000      1.000      1.000
+              55.000       3.688       0.544       7.000    3.64%       2.000      3.000
+     COSO5                 1.333       0.576       0.000   44.44%       0.000      0.000      1.000
+               9.000       2.000      -1.019       4.000   11.11%       1.000      2.000
+     GENDER                0.422       0.314       0.000   57.76%       0.000      0.000      0.000
+             599.000       0.244      -1.901       1.000   42.24%       1.000      1.000
+
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                       12
+
+Loglikelihood
+
+          H0 Value                       -2581.015
+          H0 Scaling Correction Factor      1.2790
+            for MLR
+
+Information Criteria
+
+          Akaike (AIC)                    5186.031
+          Bayesian (BIC)                  5238.774
+          Sample-Size Adjusted BIC        5200.677
+            (n* = (n + 2) / 24)
+
+
+
+MODEL RESULTS
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ INT        ON
+    GENDER            -0.725      0.186     -3.890      0.000
+
+ SLOPE      ON
+    GENDER             0.027      0.012      2.225      0.026
+
+ SLOPE    WITH
+    INT               -0.024      0.030     -0.817      0.414
+
+ Intercepts
+    COSO1              0.000      0.000    999.000    999.000
+    COSO2              0.000      0.000    999.000    999.000
+    COSO3              0.000      0.000    999.000    999.000
+    COSO4              0.000      0.000    999.000    999.000
+    COSO5              0.000      0.000    999.000    999.000
+    INT                3.138      0.137     22.982      0.000
+    SLOPE             -0.058      0.008     -6.972      0.000
+
+ Residual Variances
+    COSO1              5.590      0.751      7.444      0.000
+    COSO2              2.351      0.295      7.961      0.000
+    COSO3              1.744      0.276      6.309      0.000
+    COSO4              2.308      0.637      3.623      0.000
+    COSO5              1.358      1.201      1.131      0.258
+    INT                1.374      0.476      2.887      0.004
+    SLOPE              0.001      0.002      0.356      0.722
+
+
+QUALITY OF NUMERICAL RESULTS
+
+     Condition Number for the Information Matrix              0.772E-05
+       (ratio of smallest to largest eigenvalue)
+
+
+SAMPLE STATISTICS FOR ESTIMATED FACTOR SCORES
+
+
+     SAMPLE STATISTICS
+
+
+           Means
+              INT           INT_SE        SLOPE         SLOPE_SE
+              ________      ________      ________      ________
+                2.832         0.950        -0.046         0.026
+
+
+           Covariances
+              INT           INT_SE        SLOPE         SLOPE_SE
+              ________      ________      ________      ________
+ INT            0.590
+ INT_SE         0.001         0.010
+ SLOPE         -0.012         0.000         0.000
+ SLOPE_SE       0.000         0.000         0.000         0.000
+
+
+           Correlations
+              INT           INT_SE        SLOPE         SLOPE_SE
+              ________      ________      ________      ________
+ INT            1.000
+ INT_SE         0.015         1.000
+ SLOPE         -0.901         0.009         1.000
+ SLOPE_SE       0.039         0.957        -0.010         1.000
+
+
+PLOT INFORMATION
+
+The following plots are available:
+
+  Histograms (sample values, estimated factor scores)
+  Scatterplots (sample values, estimated factor scores)
+  Latent variable distribution plots
+  Observed individual values
+
+DIAGRAM INFORMATION
+
+  Use View Diagram under the Diagram menu in the Mplus Editor to view the diagram.
+  If running Mplus from the Mplus Diagrammer, the diagram opens automatically.
+
+  Diagram output
+    e:\ucsd - ace\paper - gender difference - sara\longitudinal analysis - lgm with individual specific time points\ados
+
+     Beginning Time:  14:49:12
+        Ending Time:  14:49:15
+       Elapsed Time:  00:00:03
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2019 Muthen & Muthen

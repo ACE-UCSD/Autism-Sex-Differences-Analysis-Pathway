@@ -1,0 +1,22 @@
+title: LGM With Person-Specific Time Codes, 
+Centered at the First Measurement Occasion
+
+data: file is data.ados.td.csv;
+
+variable: names are sid id age1-age5 gender diag
+coso1-coso5 rr1-rr5 tot1-tot5 t1-t5;
+
+usevariables are tot1-tot5 t1-t5 gender;
+missing are all (-99);
+
+tscores = t1-t5; !variables contain person-specific time codes
+
+analysis: type = random;
+estimator = MLR;
+
+model: int slope| tot1-tot5 at t1-t5; 
+!tot1-tot5(1); !constrain residual variance to equality over time (homoscedasticity)
+int ON gender;
+slope ON gender;
+
+
