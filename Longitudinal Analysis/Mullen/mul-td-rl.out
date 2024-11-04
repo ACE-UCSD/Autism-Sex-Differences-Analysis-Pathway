@@ -1,0 +1,220 @@
+Mplus VERSION 8.3
+MUTHEN & MUTHEN
+04/20/2023   2:58 PM
+
+INPUT INSTRUCTIONS
+
+  title: LGM With Person-Specific Time Codes,
+  Centered at the First Measurement Occasion
+
+  data: file is data.mul.td.csv;
+
+  variable: names are sid id gender diag age1-age5
+  fmt1-fmt5 vrt1-vrt5 rlt1-rlt5 elt1-elt5 t1-t5;
+
+  usevariables are rlt1-rlt4 t1-t4 gender;
+  missing are all (-99);
+
+  tscores = t1-t4; !variables contain person-specific time codes
+
+  analysis: type = random;
+  estimator = MLR;
+
+  model: int slope| rlt1-rlt4 at t1-t4; !define LGM with quadratic growth trajectory
+  !rlt1-rlt4(1); !constrain residual variance to equality over time (homoscedasticity)
+  int ON gender;
+  slope ON gender;
+
+  !PLOT:
+  !TYPE = plot1 plot2 plot3;
+  !SERIES = coso1(1) coso2(2) coso3(3) coso4(4) coso5(5);
+
+
+
+*** WARNING
+  Data set contains cases with missing on all variables except
+  x-variables.  These cases were not included in the analysis.
+  Number of cases with missing on all variables except x-variables:  1
+   1 WARNING(S) FOUND IN THE INPUT INSTRUCTIONS
+
+
+
+LGM With Person-Specific Time Codes,
+Centered at the First Measurement Occasion
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                         576
+
+Number of dependent variables                                    4
+Number of independent variables                                  1
+Number of continuous latent variables                            2
+
+Observed dependent variables
+
+  Continuous
+   RLT1        RLT2        RLT3        RLT4
+
+Observed independent variables
+   GENDER
+
+Continuous latent variables
+   INT         SLOPE
+
+Variables with special functions
+
+  Time scores
+   T1          T2          T3          T4
+
+
+Estimator                                                      MLR
+Information matrix                                        OBSERVED
+Maximum number of iterations                                   100
+Convergence criterion                                    0.100D-05
+Maximum number of EM iterations                                500
+Convergence criteria for the EM algorithm
+  Loglikelihood change                                   0.100D-02
+  Relative loglikelihood change                          0.100D-05
+  Derivative                                             0.100D-03
+Minimum variance                                         0.100D-03
+Maximum number of steepest descent iterations                   20
+Maximum number of iterations for H1                           2000
+Convergence criterion for H1                             0.100D-03
+Optimization algorithm                                         EMA
+
+Input data file(s)
+  data.mul.td.csv
+Input data format  FREE
+
+
+SUMMARY OF DATA
+
+     Number of missing data patterns             5
+
+
+COVARIANCE COVERAGE OF DATA
+
+Minimum covariance coverage value   0.100
+
+
+     PROPORTION OF DATA PRESENT
+
+
+           Covariance Coverage
+              RLT1          RLT2          RLT3          RLT4          GENDER
+              ________      ________      ________      ________      ________
+ RLT1           1.000
+ RLT2           0.543         0.543
+ RLT3           0.267         0.266         0.267
+ RLT4           0.033         0.033         0.033         0.033
+ GENDER         1.000         0.543         0.267         0.033         1.000
+
+     WARNING:  THE COVARIANCE COVERAGE FALLS BELOW THE SPECIFIED LIMIT.
+
+
+
+UNIVARIATE SAMPLE STATISTICS
+
+
+     UNIVARIATE HIGHER-ORDER MOMENT DESCRIPTIVE STATISTICS
+
+         Variable/         Mean/     Skewness/   Minimum/ % with                Percentiles
+        Sample Size      Variance    Kurtosis    Maximum  Min/Max      20%/60%    40%/80%    Median
+
+     RLT1                103.479       0.754      33.990    0.17%      85.950     97.740    102.800
+             576.000     465.758       6.785     274.730    0.17%     108.320    119.840
+     RLT2                110.650       0.420      68.780    0.32%      96.320    106.060    111.090
+             313.000     289.139       1.255     191.090    0.32%     114.680    124.000
+     RLT3                106.700       0.793      80.990    0.65%      96.360    100.970    105.750
+             154.000     189.996       0.870     150.790    0.65%     107.880    115.580
+     RLT4                114.876       0.817      88.310    5.26%      94.250    106.840    110.050
+              19.000     427.296      -0.222     162.800    5.26%     111.210    127.230
+     GENDER                0.415       0.345       0.000   58.51%       0.000      0.000      0.000
+             576.000       0.243      -1.881       1.000   41.49%       1.000      1.000
+
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                       11
+
+Loglikelihood
+
+          H0 Value                       -4600.941
+          H0 Scaling Correction Factor      1.4861
+            for MLR
+
+Information Criteria
+
+          Akaike (AIC)                    9223.882
+          Bayesian (BIC)                  9271.799
+          Sample-Size Adjusted BIC        9236.878
+            (n* = (n + 2) / 24)
+
+
+
+MODEL RESULTS
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ INT        ON
+    GENDER             6.815      1.734      3.931      0.000
+
+ SLOPE      ON
+    GENDER            -0.184      0.129     -1.428      0.153
+
+ SLOPE    WITH
+    INT               -0.090      1.446     -0.063      0.950
+
+ Intercepts
+    RLT1               0.000      0.000    999.000    999.000
+    RLT2               0.000      0.000    999.000    999.000
+    RLT3               0.000      0.000    999.000    999.000
+    RLT4               0.000      0.000    999.000    999.000
+    INT              103.477      1.108     93.418      0.000
+    SLOPE              0.124      0.084      1.473      0.141
+
+ Residual Variances
+    RLT1             394.907     69.148      5.711      0.000
+    RLT2             207.933     31.418      6.618      0.000
+    RLT3              81.004     22.584      3.587      0.000
+    RLT4             275.346    115.997      2.374      0.018
+    INT               77.315     26.836      2.881      0.004
+    SLOPE              0.064      0.085      0.759      0.448
+
+
+QUALITY OF NUMERICAL RESULTS
+
+     Condition Number for the Information Matrix              0.358E-04
+       (ratio of smallest to largest eigenvalue)
+
+
+DIAGRAM INFORMATION
+
+  Use View Diagram under the Diagram menu in the Mplus Editor to view the diagram.
+  If running Mplus from the Mplus Diagrammer, the diagram opens automatically.
+
+  Diagram output
+    e:\ucsd - ace\paper - gender difference - sara\longitudinal analysis - lgm with individual specific time points\mull
+
+     Beginning Time:  14:58:17
+        Ending Time:  14:58:17
+       Elapsed Time:  00:00:00
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2019 Muthen & Muthen
