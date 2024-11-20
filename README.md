@@ -5,7 +5,7 @@ Primary and cluster analyses were performed using **RStudio 2024.09.0+375**, and
 
 ## Installation Guide
 **R** and **RStudio** are available as open-source software. You can install them by visiting [https://www.r-project.org/](https://www.r-project.org/) and [https://www.rstudio.com/](https://www.rstudio.com/).
-**Mplus** requires a license. We used Mplus provided by the **University of Florida**. You can obtain a license from [https://www.statmodel.com/](https://www.statmodel.com/).
+**Mplus** requires a license. You can obtain a license from [https://www.statmodel.com/](https://www.statmodel.com/).
 
 ### Installation Time
 Installation time for R, RStudio, and Mplus is relatively short, typically around **5-10 minutes**, depending on your computer's specifications.
