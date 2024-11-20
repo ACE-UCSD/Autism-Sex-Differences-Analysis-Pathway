@@ -4,8 +4,8 @@
 Primary and cluster analyses were performed using **RStudio 2024.09.0+375**, and longitudinal analyses were conducted in **Mplus 8.3**. The software is compatible with both **Windows** and **macOS** operating systems.
 
 ## Installation Guide
-1. **R** and **RStudio** are available as open-source software. You can install them by visiting [https://www.r-project.org/](https://www.r-project.org/) and [https://www.rstudio.com/](https://www.rstudio.com/).
-2. **Mplus** requires a license. We used Mplus provided by the **University of Florida**. You can obtain a license from [https://www.statmodel.com/](https://www.statmodel.com/).
+**R** and **RStudio** are available as open-source software. You can install them by visiting [https://www.r-project.org/](https://www.r-project.org/) and [https://www.rstudio.com/](https://www.rstudio.com/).
+**Mplus** requires a license. We used Mplus provided by the **University of Florida**. You can obtain a license from [https://www.statmodel.com/](https://www.statmodel.com/).
 
 ### Installation Time
 - Installation time for R, RStudio, and Mplus is relatively short, typically around **5-10 minutes**, depending on your computer's specifications.
