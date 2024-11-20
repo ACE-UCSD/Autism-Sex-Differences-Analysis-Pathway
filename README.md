@@ -8,7 +8,7 @@ Primary and cluster analyses were performed using **RStudio 2024.09.0+375**, and
 **Mplus** requires a license. We used Mplus provided by the **University of Florida**. You can obtain a license from [https://www.statmodel.com/](https://www.statmodel.com/).
 
 ### Installation Time
-- Installation time for R, RStudio, and Mplus is relatively short, typically around **5-10 minutes**, depending on your computer's specifications.
+Installation time for R, RStudio, and Mplus is relatively short, typically around **5-10 minutes**, depending on your computer's specifications.
 
 ## Demo and Instructions for Use
 The code provided is fully commented to guide users through analyzing the data. To replicate the results presented in the manuscript tables, please follow the comments in the scripts. Users are expected to:
